@@ -1,0 +1,11 @@
+@import url("./body-styles.css");
+@import url("./pygments.css");
+
+sphinx-document {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+sphinx-header, sphinx-footer {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}

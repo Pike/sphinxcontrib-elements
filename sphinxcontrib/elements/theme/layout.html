@@ -1,0 +1,28 @@
+{%- if global_ctx.docstitle %}
+  {%- set titlesuffix = " &#8212; "|safe + global_ctx.docstitle|e %}
+{%- else %}
+  {%- set titlesuffix = "" %}
+{%- endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
+    <link rel="stylesheet" href="{{elements_theme}}/theme.css">
+    <script src="{{elements_theme}}/theme.js" type="module"></script>
+    {%- block extra_head %}{% endblock %}
+    <script type="application/json" id="global-ctx">{{global_ctx|tojson(1)}}</script>
+    <script type="application/json" id="local-ctx">{{local_ctx|tojson(1)}}</script>
+</head>
+<body>
+    <sphinx-document>
+        <sphinx-header></sphinx-header>
+        <sphinx-sidebar></sphinx-sidebar>
+        <sphinx-content>{% block body %}{% endblock %}</sphinx-content>
+        <sphinx-footer></sphinx-footer>
+    </sphinx-document>
+    <template id="elements-page-toc">{{toc}}</template>
+    <template id="elements-docs-toc">{{toctree()}}</template>
+</body>
+</html>
