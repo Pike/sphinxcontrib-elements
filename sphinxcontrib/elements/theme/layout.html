@@ -18,11 +18,11 @@
 <body>
     <sphinx-document>
         <sphinx-header></sphinx-header>
+        <sphinx-relbar class="top"></sphinx-relbar>
         <sphinx-sidebar></sphinx-sidebar>
         <sphinx-content>{% block body %}{% endblock %}</sphinx-content>
+        <sphinx-relbar class="bottom"></sphinx-relbar>
         <sphinx-footer></sphinx-footer>
     </sphinx-document>
-    <template id="elements-page-toc">{{toc}}</template>
-    <template id="elements-docs-toc">{{toctree()}}</template>
 </body>
 </html>

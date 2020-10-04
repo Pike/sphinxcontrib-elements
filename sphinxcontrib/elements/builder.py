@@ -75,10 +75,32 @@ class ElementsBuilder(StandaloneHTMLBuilder):
             for key, value in ctx.items()
             if not (
                 key.startswith('toc') or
-                key in ('title', 'body') or
+                key in ('body',) or
                 isinstance(value, types.FunctionType)
             )
         }
+        def pathto(otheruri: str, resource: bool = False, baseuri: str = default_baseuri) -> str:  # NOQA
+            if resource and '://' in otheruri:
+                # allow non-local resources given by scheme
+                return otheruri
+            elif not resource:
+                otheruri = self.get_target_uri(otheruri)
+            uri = relative_uri(baseuri, otheruri) or '#'
+            if uri == '#' and not self.allow_sharp_as_current_path:
+                uri = baseuri
+            return uri
+        # fix up rellinks to be rich data
+        if 'rellinks' in local_context:
+            local_context['rellinks'] = [
+                {
+                    "href": pathto(rellink[0]),
+                    "title": rellink[1],
+                    "accessKey": rellink[2],
+                    "textContent": rellink[3],
+                }
+                for rellink in local_context['rellinks']
+            ]
+        local_context['master_href'] = pathto(global_context['master_doc'])
         ctx['global_ctx'] = global_context
         ctx['local_ctx'] = local_context
 

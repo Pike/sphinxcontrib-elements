@@ -5,7 +5,42 @@ sphinx-document {
     display: grid;
     grid-template-columns: auto 1fr;
 }
-sphinx-header, sphinx-footer {
+sphinx-header, sphinx-footer, sphinx-relbar {
     grid-column-start: 1;
     grid-column-end: 3;
+}
+
+sphinx-content {
+    min-width: 450px;
+    max-width: 800px;
+}
+
+/* -- relbar ---------------------------------------------------------------- */
+
+div.related {
+    width: 100%;
+    font-size: 90%;
+}
+
+div.related h3 {
+    display: none;
+}
+
+div.related ul {
+    margin: 0;
+    padding: 0 0 0 10px;
+    list-style: none;
+}
+
+div.related li {
+    display: inline;
+}
+
+div.related li.right {
+    float: right;
+    margin-right: 5px;
+}
+
+div.related li.right:first-child {
+    margin-right: 10px;
 }
