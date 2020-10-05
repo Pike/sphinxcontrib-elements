@@ -65,7 +65,7 @@ export let relbar = (function() {
         rellinks.appendChild(rootrellink(context));
         const li = content` <li class="nav-item nav-item-this"><a></a></li>`
         const a = li.querySelector("a")
-        a.href = '#';
+        a.href = "";
         a.textContent = context.title;
         rellinks.appendChild(li);
         return container;
@@ -133,5 +133,26 @@ export class SearchBox extends HTMLElement {
     }
     connectedCallback() {
 
+    }
+}
+
+export class Footer extends HTMLElement {
+    constructor() {
+        super();
+    }
+
+    connectedCallback() {
+        if (this.childElementCount) return;
+        const context = document
+            .getElementsByTagName("sphinx-document")[0]
+            .context;
+        this.setAttribute("role", "contentinfo");
+        this.textContent = `© Copyright ${context.copyright}.`;
+        this.textContent +=  ' Created using ';
+        const  a = document.createElement("a");
+        a.href = "https://www.sphinx-doc.org/";
+        a.textContent = "Sphinx";
+        this.appendChild(a);
+        this.appendChild(document.createTextNode(" " + context.sphinx_version));
     }
 }
