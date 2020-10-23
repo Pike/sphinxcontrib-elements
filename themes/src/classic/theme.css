@@ -1,0 +1,22 @@
+:root {
+    --theme-bodyfont: sans-serif;
+    --theme-headfont: 'Trebuchet MS', sans-serif;
+    --theme-footerbgcolor    : #11303d;
+    --theme-footertextcolor  : #ffffff;
+    --theme-sidebarbgcolor   : #1c4e63;
+    --theme-sidebarbtncolor  : #3c6e83;
+    --theme-sidebartextcolor : #ffffff;
+    --theme-sidebarlinkcolor : #98dbcc;
+    --theme-relbarbgcolor    : #133f52;
+    --theme-relbartextcolor  : #ffffff;
+    --theme-relbarlinkcolor  : #ffffff;
+    --theme-bgcolor          : #ffffff;
+    --theme-textcolor        : #000000;
+    --theme-headbgcolor      : #f2f2f2;
+    --theme-headtextcolor    : #20435c;
+    --theme-headlinkcolor    : #c60f0f;
+    --theme-linkcolor        : #355f7c;
+    --theme-visitedlinkcolor : #355f7c;
+}
+
+@import url("./classic.css");

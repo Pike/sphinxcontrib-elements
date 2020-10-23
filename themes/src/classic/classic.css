@@ -1,0 +1,307 @@
+/*
+ * classic.css_t
+ * ~~~~~~~~~~~~~
+ *
+ * Sphinx stylesheet -- classic theme.
+ *
+ * :copyright: Copyright 2007-2020 by the Sphinx team, see AUTHORS.
+ * :license: BSD, see LICENSE for details.
+ *
+ */
+
+ @import url("../basic/theme.css");
+
+/* -- page layout ----------------------------------------------------------- */
+
+html {
+    /* CSS hack for macOS's scrollbar (see #1125) */
+    background-color: #FFFFFF;
+}
+
+body {
+    font-family: var(--theme-bodyfont);
+    font-size: 100%;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+sphinx-document {
+    background-color: var(--theme-sidebarbgcolor);
+}
+sphinx-document.sidebar-right {
+    grid-template-columns: 1fr auto;
+}
+.sidebar-right sphinx-sidebar {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+div.documentwrapper {
+    float: left;
+    width: 100%;
+}
+
+sphinx-sidebar {
+    width: var(--theme-sidebarwidth);
+}
+
+sphinx-content {
+    background-color: var(--theme-bgcolor);
+    color: var(--theme-textcolor);
+    padding: 0 20px 30px 20px;
+}
+
+sphinx-footer.classic {
+    color: var(--theme-footertextcolor);
+    background-color: var(--theme-footerbgcolor);
+    width: 100%;
+    padding: 9px 0 9px 0;
+    text-align: center;
+    font-size: 75%;
+}
+
+sphinx-footer.classic a {
+    color: var(--theme-footertextcolor);
+    text-decoration: underline;
+}
+
+div.related {
+    background-color: var(--theme-relbarbgcolor);
+    line-height: 30px;
+    color: var(--theme-relbartextcolor);
+}
+
+div.related a {
+    color: var(--theme-relbarlinkcolor);
+}
+
+sphinx-sidebar {
+    /* {%- if theme_stickysidebar|tobool %}
+    top: 30px;
+    bottom: 0;
+    margin: 0;
+    position: fixed;
+    overflow: auto;
+    height: auto;
+    {%- endif %}
+    {%- if theme_rightsidebar|tobool %}
+    float: right;
+    {%- if theme_stickysidebar|tobool %}
+    right: 0;
+    {%- endif %}
+    {%- endif %} */
+}
+
+sphinx-sidebar h3 {
+    font-family: var(--theme-headfont);
+    color: var(--theme-sidebartextcolor);
+    font-size: 1.4em;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+sphinx-sidebar h3 a {
+    color: var(--theme-sidebartextcolor);
+}
+
+sphinx-sidebar h4 {
+    font-family: var(--theme-headfont);
+    color: var(--theme-sidebartextcolor);
+    font-size: 1.3em;
+    font-weight: normal;
+    margin: 5px 0 0 0;
+    padding: 0;
+}
+
+sphinx-sidebar p {
+    color: var(--theme-sidebartextcolor);
+}
+
+sphinx-sidebar p.topless {
+    margin: 5px 10px 10px 10px;
+}
+
+sphinx-sidebar ul {
+    margin: 10px;
+    padding: 0;
+    color: var(--theme-sidebartextcolor);
+}
+
+sphinx-sidebar a {
+    color: var(--theme-sidebarlinkcolor);
+}
+
+sphinx-sidebar input {
+    border: 1px solid var(--theme-sidebarlinkcolor);
+    font-family: sans-serif;
+    font-size: 1em;
+}
+
+/* {% if theme_collapsiblesidebar|tobool %} */
+/* for collapsible sidebar */
+/* div#sidebarbutton {
+    background-color: var(--theme-sidebarbtncolor);
+}
+{% endif %} */
+
+/* -- hyperlink styles ------------------------------------------------------ */
+
+a {
+    color: var(--theme-linkcolor);
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--theme-visitedlinkcolor);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* {% if theme_externalrefs|tobool %}
+a.external {
+   text-decoration: none;
+   border-bottom: 1px dashed var(--theme-linkcolor);
+}
+
+a.external:hover {
+   text-decoration: none;
+   border-bottom: none;
+}
+
+a.external:visited {
+    text-decoration: none;
+    border-bottom: 1px dashed var(--theme-visitedlinkcolor);
+}
+{% endif %} */
+
+/* -- body styles ----------------------------------------------------------- */
+
+sphinx-content h1,
+sphinx-content h2,
+sphinx-content h3,
+sphinx-content h4,
+sphinx-content h5,
+sphinx-content h6 {
+    font-family: var(--theme-headfont);
+    background-color: var(--theme-headbgcolor);
+    font-weight: normal;
+    color: var(--theme-headtextcolor);
+    border-bottom: 1px solid #ccc;
+    margin: 20px -20px 10px -20px;
+    padding: 3px 0 3px 10px;
+}
+
+sphinx-content h1 { margin-top: 0; font-size: 200%; }
+sphinx-content h2 { font-size: 160%; }
+sphinx-content h3 { font-size: 140%; }
+sphinx-content h4 { font-size: 120%; }
+sphinx-content h5 { font-size: 110%; }
+sphinx-content h6 { font-size: 100%; }
+
+a.headerlink {
+    color: var(--theme-headlinkcolor);
+    font-size: 0.8em;
+    padding: 0 4px 0 4px;
+    text-decoration: none;
+}
+
+a.headerlink:hover {
+    background-color: var(--theme-headlinkcolor);
+    color: white;
+}
+
+sphinx-content p, sphinx-content dd, sphinx-content li, sphinx-content blockquote {
+    text-align: justify;
+    line-height: 130%;
+}
+
+div.admonition p.admonition-title + p {
+    display: inline;
+}
+
+div.admonition p {
+    margin-bottom: 5px;
+}
+
+div.admonition pre {
+    margin-bottom: 5px;
+}
+
+div.admonition ul, div.admonition ol {
+    margin-bottom: 5px;
+}
+
+div.note {
+    background-color: #eee;
+    border: 1px solid #ccc;
+}
+
+div.seealso {
+    background-color: #ffc;
+    border: 1px solid #ff6;
+}
+
+div.topic {
+    background-color: #eee;
+}
+
+div.warning {
+    background-color: #ffe4e4;
+    border: 1px solid #f66;
+}
+
+p.admonition-title {
+    display: inline;
+}
+
+p.admonition-title:after {
+    content: ":";
+}
+
+pre {
+    padding: 5px;
+    background-color: var(--theme-codebgcolor);
+    color: var(--theme-codetextcolor);
+    line-height: 120%;
+    border: 1px solid #ac9;
+    border-left: none;
+    border-right: none;
+}
+
+code {
+    background-color: #ecf0f3;
+    padding: 0 1px 0 1px;
+    font-size: 0.95em;
+}
+
+th, dl.field-list > dt {
+    background-color: #ede;
+}
+
+.warning code {
+    background: #efc2c2;
+}
+
+.note code {
+    background: #d6d6d6;
+}
+
+.viewcode-back {
+    font-family: var(--theme-bodyfont);
+}
+
+div.viewcode-block:target {
+    background-color: #f4debf;
+    border-top: 1px solid #ac9;
+    border-bottom: 1px solid #ac9;
+}
+
+div.code-block-caption {
+    color: #efefef;
+    background-color: #1c4e63;
+}
