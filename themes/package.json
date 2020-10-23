@@ -1,0 +1,9 @@
+{
+  "name": "themes",
+  "devDependencies": {
+    "parcel": "^2.0.0-nightly.420"
+  },
+  "engines": {
+    "browsers": "Chrome 70"
+  }
+}

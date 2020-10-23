@@ -1,5 +1,10 @@
+:root {
+    --body-min-width: 450px;
+    --body-max-width: 800px;
+    --theme-sidebarwidth: 230px;
+}
+
 @import url("./body-styles.css");
-@import url("./pygments.css");
 
 sphinx-document {
     display: grid;
@@ -11,8 +16,8 @@ sphinx-header, sphinx-footer, sphinx-relbar {
 }
 
 sphinx-content {
-    min-width: 450px;
-    max-width: 800px;
+    min-width: var(--body-min-width);
+    max-width: var(--body-max-width);
 }
 
 /* -- relbar ---------------------------------------------------------------- */

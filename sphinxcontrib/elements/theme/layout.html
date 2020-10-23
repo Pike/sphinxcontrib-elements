@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
     <link rel="stylesheet" href="{{elements_theme}}/theme.css">
-    <script src="{{elements_theme}}/theme.js" type="module"></script>
+    <script src="{{elements_theme}}/theme.js" ></script>
     {%- block extra_head %}{% endblock %}
     <script type="application/json" id="global-ctx">{{global_ctx|tojson(1)}}</script>
     <script type="application/json" id="local-ctx">{{local_ctx|tojson(1)}}</script>
