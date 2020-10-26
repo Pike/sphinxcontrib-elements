@@ -2,6 +2,8 @@
     --body-min-width: 450px;
     --body-max-width: 800px;
     --theme-sidebarwidth: 230px;
+    --relsep: " »";
+    --relsep2: " |";
 }
 
 @import url("./body-styles.css");
@@ -48,4 +50,12 @@ div.related li.right {
 
 div.related li.right:first-child {
     margin-right: 10px;
+}
+
+div.related li.right:not(:first-child)::after {
+    content: var(--relsep2);
+}
+
+div.related  .nav-item:not(:last-child)::after {
+    content: var(--relsep);
 }

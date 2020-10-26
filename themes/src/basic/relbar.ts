@@ -6,8 +6,6 @@ let rootlink: HTMLElement | undefined;
 
 export function create_relbar(): CustomElementConstructor {
     class Relbar extends HTMLElement {
-        relsep = " »";
-        relsep2 = " |";
         constructor() {
             super();
         }
@@ -34,9 +32,6 @@ export function create_relbar(): CustomElementConstructor {
             const rellinks = container.lastElementChild;
             if (context.rellinks) {
                 context.rellinks.forEach(function(l, i) {
-                    if (i) {
-                        rellinks.appendChild(document.createTextNode(this.relsep2))
-                    }
                     let a = document.createElement("a");
                     a.accessKey = l.accessKey;
                     a.href = l.href;
@@ -69,7 +64,6 @@ export function create_relbar(): CustomElementConstructor {
             const li = document.createElement("li");
             li.className = "nav-item nav-item-0";
             li.appendChild(a);
-            li.appendChild(document.createTextNode(this.relsep));
             return li;
         }
     }
