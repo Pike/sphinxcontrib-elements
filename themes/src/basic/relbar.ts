@@ -47,7 +47,7 @@ export function create_relbar(): CustomElementConstructor {
             const li = content` <li class="nav-item nav-item-this"><a></a></li>`
             const a = li.querySelector("a")
             a.href = "";
-            a.textContent = context.title;
+            a.innerHTML = context.title;
             rellinks.appendChild(li);
             return container;
         }
