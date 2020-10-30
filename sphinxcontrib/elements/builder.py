@@ -3,12 +3,68 @@ import logging
 import os
 import types
 from typing import Any, Dict, Set, Tuple
+from docutils import nodes
 from sphinx.builders.html import StandaloneHTMLBuilder
+from sphinx.environment.adapters.toctree import TocTree
 from sphinx.locale import __
+from sphinx.util.docutils import new_document
 from sphinx.util.osutil import SEP, copyfile, ensuredir, os_path, relative_uri
+from sphinx.writers.html5 import HTML5Translator
 
 
 logger = logging.getLogger(__name__)
+
+
+class pagetoc(nodes.General, nodes.Element):
+    pass
+
+
+class TocTranslator(HTML5Translator):
+    document_prefix = [
+        '<!DOCTYPE html>\n',
+        '<html>\n',
+        '<head>\n',
+        '<meta charset="UTF-8">\n',
+        '</head>\n',
+        '<body>\n'
+    ]
+    document_suffix = [
+        '</body>\n',
+        '</html>\n',
+    ]
+
+    def astext(self) -> str:
+        return ''.join(
+            self.document_prefix +
+            self.body +
+            self.document_suffix
+        )
+
+    def visit_pagetoc(self, node: nodes.Element) -> None:
+        self.body.append(self.starttag(node, 'template', pagename=node["pagename"]))
+
+    def depart_pagetoc(self, node: nodes.Element) -> None:
+        self.body.append('</template>\n')
+
+    def visit_toctree(self, node: nodes.Element) -> None:
+        atts = {}
+        atts['class'] = 'pagerefs'
+        for attname in (
+            'caption', 'glob', 'hidden', 'includehidden', 'maxdepth', 'numbered', 'titlesonly'
+        ):
+            if node[attname] is not None:
+                atts[attname] = node[attname]
+        self.body.append(self.starttag(node, 'div', **atts))
+        for title, pagename in node["entries"]:
+            atts = {}
+            atts['data-pagename'] = pagename
+            self.body += [
+                self.starttag(node, 'span', suffix='', **atts),
+                '</span>\n',
+            ]
+
+    def depart_toctree(self, node: nodes.Element) -> None:
+        self.body.append('</div>\n')
 
 
 class ElementsBuilder(StandaloneHTMLBuilder):
@@ -31,6 +87,21 @@ class ElementsBuilder(StandaloneHTMLBuilder):
         pass
 
     def gen_additional_pages(self) -> None:
+        adapter = TocTree(self.env)
+        settings = self.docsettings.copy()
+        settings.xml_declaration = False
+        doc = new_document("", self.docsettings)
+        for pagename in self.env.tocs.keys():
+            toc = adapter.get_toc_for(pagename, self)
+            tocnode = pagetoc()
+            tocnode["pagename"] = pagename
+            tocnode += [toc.deepcopy()]
+            doc.append(tocnode)
+        tt = TocTranslator(doc, self)
+        doc.walkabout(tt)
+        outfilename = os.path.join(self.outdir, "_tocs.html")
+        with open(outfilename, "w") as fh:
+            fh.write(tt.astext())
         super().gen_additional_pages()
 
     def add_sidebars(self, pagename: str, ctx: Dict) -> None:

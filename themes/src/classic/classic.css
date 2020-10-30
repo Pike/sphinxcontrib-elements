@@ -44,6 +44,16 @@ div.documentwrapper {
 
 sphinx-sidebar {
     width: var(--theme-sidebarwidth);
+    padding-top: 10px;
+    font-size: 90%;
+    word-wrap: break-word;
+    overflow-wrap : break-word;
+}
+
+sphinx-sidebar > * {
+    padding-left: 10px;
+    padding-right: 5px;
+    display: block;
 }
 
 sphinx-content {
@@ -52,7 +62,7 @@ sphinx-content {
     padding: 0 20px 30px 20px;
 }
 
-sphinx-footer.classic {
+sphinx-footer {
     color: var(--theme-footertextcolor);
     background-color: var(--theme-footerbgcolor);
     width: 100%;
@@ -61,7 +71,7 @@ sphinx-footer.classic {
     font-size: 75%;
 }
 
-sphinx-footer.classic a {
+sphinx-footer a {
     color: var(--theme-footertextcolor);
     text-decoration: underline;
 }
@@ -127,6 +137,17 @@ sphinx-sidebar ul {
     margin: 10px;
     padding: 0;
     color: var(--theme-sidebartextcolor);
+    list-style: none;
+}
+
+sphinx-sidebar ul ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+sphinx-sidebar ul ul, sphinx-sidebar ul.want-points {
+    list-style: square;
+    margin-left: 20px;
 }
 
 sphinx-sidebar a {
@@ -149,18 +170,24 @@ sphinx-sidebar input {
 /* -- hyperlink styles ------------------------------------------------------ */
 
 a {
-    color: var(--theme-linkcolor);
     text-decoration: none;
 }
 
 a:visited {
-    color: var(--theme-visitedlinkcolor);
     text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
 }
+sphinx-content a {
+    color: var(--theme-linkcolor);
+}
+
+sphinx-content a:visited {
+    color: var(--theme-visitedlinkcolor);
+}
+
 
 /* {% if theme_externalrefs|tobool %}
 a.external {
