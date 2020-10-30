@@ -20,7 +20,7 @@ export function create_sidebar_localtoc() {
             for (const pagerefs of pagetoc.querySelectorAll('div.pagerefs')) {
                 pagerefs.remove();
             }
-            if (pagetoc.children[0].children.length < 2) {
+            if (pagetoc.querySelectorAll('li').length < 2) {
                 return;
             }
             const h = document.createElement('h3');
