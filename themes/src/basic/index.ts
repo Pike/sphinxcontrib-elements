@@ -5,6 +5,7 @@ import { create_relbar } from "./relbar"
 import { create_sidebar } from "./sidebar"
 import { create_sidebar_localtoc } from "./sidebar-localtoc"
 import { create_sidebar_relations } from "./sidebar-relations"
+import { create_sidebar_sourcelink } from "./sidebar-sourcelink"
 
 
 export class Elements {
@@ -36,6 +37,9 @@ export class Elements {
     create_sidebar_relations() {
         this.elements.set("sidebar-relations", create_sidebar_relations())
     }
+    create_sidebar_sourcelink() {
+        this.elements.set("sidebar-sourcelink", create_sidebar_sourcelink())
+    }
     create_elements(opts: types.Options) {
         this.create_footer()
         this.create_document()
@@ -44,6 +48,7 @@ export class Elements {
             this.create_sidebar(opts)
             this.create_sidebar_localtoc()
             this.create_sidebar_relations()
+            this.create_sidebar_sourcelink()
         }
     }
 }
