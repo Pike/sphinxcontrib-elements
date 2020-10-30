@@ -4,6 +4,7 @@ import { create_document } from "./document"
 import { create_relbar } from "./relbar"
 import { create_sidebar } from "./sidebar"
 import { create_sidebar_localtoc } from "./sidebar-localtoc"
+import { create_sidebar_relations } from "./sidebar-relations"
 
 
 export class Elements {
@@ -32,6 +33,9 @@ export class Elements {
     create_sidebar_localtoc() {
         this.elements.set("sidebar-localtoc", create_sidebar_localtoc())
     }
+    create_sidebar_relations() {
+        this.elements.set("sidebar-relations", create_sidebar_relations())
+    }
     create_elements(opts: types.Options) {
         this.create_footer()
         this.create_document()
@@ -39,6 +43,7 @@ export class Elements {
         if (!opts.nosidebar && opts.sidebars.length >= 0) {
             this.create_sidebar(opts)
             this.create_sidebar_localtoc()
+            this.create_sidebar_relations()
         }
     }
 }

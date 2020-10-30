@@ -4,4 +4,4 @@ export interface Options extends BasicOptions {}
 
 export let OPTIONS_DEFAULTS = Object.create(BASIC_DEFAULTS)
 
-OPTIONS_DEFAULTS.sidebars = ["localtoc"]
+OPTIONS_DEFAULTS.sidebars = ["localtoc", "relations"]
