@@ -23,7 +23,10 @@ def setup(app):
     from .builder import ElementsBuilder
     app.setup_extension('sphinx.builders.html')
     app.add_builder(ElementsBuilder)
-    app.add_html_theme('sphinxcontrib-elements-theme', os.path.join(os.path.abspath(os.path.dirname(__file__)), 'theme'))
+    app.add_html_theme(
+        'sphinxcontrib-elements-theme',
+        os.path.join(os.path.abspath(os.path.dirname(__file__)), 'theme')
+    )
     return {
         'version': __version__,
         'parallel_read_safe': True,

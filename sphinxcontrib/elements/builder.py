@@ -2,13 +2,13 @@ import json
 import logging
 import os
 import types
-from typing import Any, Dict, Set, Tuple
+from typing import Any, Dict, Tuple
 from docutils import nodes
 from sphinx.builders.html import StandaloneHTMLBuilder
 from sphinx.environment.adapters.toctree import TocTree
 from sphinx.locale import __
 from sphinx.util.docutils import new_document
-from sphinx.util.osutil import SEP, copyfile, ensuredir, os_path, relative_uri
+from sphinx.util.osutil import copyfile, ensuredir, os_path, relative_uri
 from sphinx.writers.html5 import HTML5Translator
 
 
@@ -116,7 +116,7 @@ class ElementsBuilder(StandaloneHTMLBuilder):
         default_baseuri = self.get_target_uri(pagename)
         ctx['depth'] = relative_uri(default_baseuri, 'a')[:-1] or "./"
         ctx['elements_theme'] = ctx['depth'] + '_static'
-        if outfilename is  None:
+        if outfilename is None:
             outfilename = os.path.join(self.outdir,
                                        os_path(pagename) + self.out_suffix)
 

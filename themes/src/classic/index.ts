@@ -1,12 +1,8 @@
 import * as types from "./types"
 import {Elements as BasicElements} from "../basic"
-import { create_footer } from "./footer"
 
 
 export class Elements extends BasicElements {
-    create_footer() {
-        this.elements.set("footer", create_footer());
-    }
 }
 
 
