@@ -1,0 +1,20 @@
+sphinx-sidebar form {
+    margin-top: 10px;
+}
+
+sphinx-sidebar sphinx-sidebar-searchbox form.search {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+
+sphinx-sidebar sphinx-sidebar-searchbox input[type="text"] {
+    padding: 0.25em;
+    box-sizing: border-box;
+}
+
+sphinx-sidebar sphinx-sidebar-searchbox input[type="submit"] {
+    border-left: none;
+    padding: 0.25em;
+    box-sizing: border-box;
+}
