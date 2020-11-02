@@ -21,4 +21,4 @@ Links
 - Source: https://github.com/Pike/sphinxcontrib-elements
 - Bugs: https://github.com/Pike/sphinxcontrib-elements/issues
 
-.. _themes: /Pike/sphinxcontrib-elements/tree/main/themes
+.. _themes: themes
