@@ -4,7 +4,6 @@ import os
 import types
 from typing import Any, Dict, Tuple
 from docutils import nodes
-from sphinx.builders.html import StandaloneHTMLBuilder
 from sphinx.environment.adapters.toctree import TocTree
 from sphinx.locale import __
 from sphinx.util.docutils import new_document
@@ -67,8 +66,7 @@ class TocTranslator(HTML5Translator):
         self.body.append('</div>\n')
 
 
-class ElementsBuilder(StandaloneHTMLBuilder):
-    name = 'sphinxcontrib-elements'
+class ElementsMixin:
     implementation = None
     implementation_dumps_unicode = True
     indexer_format = json
@@ -117,8 +115,7 @@ class ElementsBuilder(StandaloneHTMLBuilder):
         ctx['depth'] = relative_uri(default_baseuri, 'a')[:-1] or "./"
         ctx['elements_theme'] = ctx['depth'] + '_static'
         if outfilename is None:
-            outfilename = os.path.join(self.outdir,
-                                       os_path(pagename) + self.out_suffix)
+            outfilename = self.get_outfilename(pagename)
 
         ctx['toctree'] = lambda **kwargs: self._get_local_toctree(pagename, **kwargs)
 
@@ -191,7 +188,3 @@ class ElementsBuilder(StandaloneHTMLBuilder):
                                        os_path(ctx['sourcename']))
             ensuredir(os.path.dirname(source_name))
             copyfile(self.env.doc2path(pagename), source_name)
-
-    def handle_finish(self):
-        # skip the stuff `SerializingHTMLBuilder` does
-        StandaloneHTMLBuilder.handle_finish(self)

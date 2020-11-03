@@ -20,9 +20,18 @@ __version__ = "0.1"
 
 def setup(app):
     # type: (Sphinx) -> Dict[str, Any]
-    from .builder import ElementsBuilder
+    from .builder import ElementsMixin
+    from sphinx.builders.dirhtml import StandaloneHTMLBuilder, DirectoryHTMLBuilder
+
+    class ElementsBuilder(ElementsMixin, StandaloneHTMLBuilder):
+        name = 'sphinxcontrib-elements'
+
+    class ElementsDirBuilder(ElementsMixin, DirectoryHTMLBuilder):
+        name = 'sphinxcontrib-dir-elements'
+
     app.setup_extension('sphinx.builders.html')
     app.add_builder(ElementsBuilder)
+    app.add_builder(ElementsDirBuilder)
     app.add_html_theme(
         'sphinxcontrib-elements-theme',
         os.path.join(os.path.abspath(os.path.dirname(__file__)), 'theme')
