@@ -37,25 +37,6 @@ sphinx-document.sidebar-right {
     grid-column-end: 3;
 }
 
-div.documentwrapper {
-    float: left;
-    width: 100%;
-}
-
-sphinx-sidebar {
-    width: var(--theme-sidebarwidth);
-    padding-top: 10px;
-    font-size: 90%;
-    word-wrap: break-word;
-    overflow-wrap : break-word;
-}
-
-sphinx-sidebar > * {
-    padding-left: 10px;
-    padding-right: 5px;
-    display: block;
-}
-
 sphinx-content {
     background-color: var(--theme-bgcolor);
     color: var(--theme-textcolor);
@@ -137,17 +118,6 @@ sphinx-sidebar ul {
     margin: 10px;
     padding: 0;
     color: var(--theme-sidebartextcolor);
-    list-style: none;
-}
-
-sphinx-sidebar ul ul {
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-sphinx-sidebar ul ul, sphinx-sidebar ul.want-points {
-    list-style: square;
-    margin-left: 20px;
 }
 
 sphinx-sidebar a {

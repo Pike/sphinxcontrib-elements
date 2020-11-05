@@ -2,6 +2,7 @@
     --body-min-width: 450px;
     --body-max-width: 800px;
     --theme-sidebarwidth: 230px;
+    --theme-sidebarlinkcolor: #98dbcc;
     --relsep: " »";
     --relsep2: " |";
 }
