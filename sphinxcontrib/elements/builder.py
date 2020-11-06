@@ -119,13 +119,6 @@ class ElementsMixin:
 
         ctx['toctree'] = lambda **kwargs: self._get_local_toctree(pagename, **kwargs)
 
-        # newtmpl = self.app.emit_firstresult('html-page-context', pagename,
-        #                                     templatename, ctx, event_arg)
-        # if newtmpl:
-        #     templatename = newtmpl
-        if templatename not in ('page.html', ):
-            print("\n\n", templatename, pagename, "\n\n")
-            return
         global_context = {
             key: value
             for key, value in self.globalcontext.items()
@@ -171,6 +164,15 @@ class ElementsMixin:
         local_context['master_href'] = pathto(global_context['master_doc'])
         ctx['global_ctx'] = global_context
         ctx['local_ctx'] = local_context
+        ctx['script_files'] = self.script_files
+        ctx['pathto'] = pathto
+        newtmpl = self.app.emit_firstresult('html-page-context', pagename,
+                                            templatename, ctx, event_arg)
+        if newtmpl:
+            templatename = newtmpl
+        if templatename not in ('page.html', ):
+            print("\n\n", templatename, pagename, "\n\n")
+            return
 
         ensuredir(os.path.dirname(outfilename))
         output = self.templates.render(templatename, ctx)

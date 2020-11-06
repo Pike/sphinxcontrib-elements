@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="{{elements_theme}}/theme.css">
     <link rel="stylesheet" href="{{elements_theme}}/pygments.css">
     <script src="{{elements_theme}}/theme.js" ></script>
+    {%- for js in script_files %}
+    {{ js_tag(js) }}
+    {%- endfor %}
     {%- block extra_head %}{% endblock %}
     <script type="application/json" id="global-ctx">{{global_ctx|tojson(1)}}</script>
     <script type="application/json" id="local-ctx">{{local_ctx|tojson(1)}}</script>
